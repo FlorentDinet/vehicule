@@ -3,13 +3,23 @@
 namespace App;
 
 
+use App\Exception\VisibleException;
+use App\Interfaces\VendreInterface;
+use App\Interfaces\VisibleInterface;
+use App\Traits\MailTrait;
 use \DateTime;
 
 /**
  * Class Vehicule
  * @package App
  */
-abstract class Vehicule{
+abstract class Vehicule implements VisibleInterface {
+
+    /**
+     *
+     */
+    use MailTrait;
+
 
     /**
      * @var
@@ -57,6 +67,8 @@ abstract class Vehicule{
      */
     public function __construct($modele, $marque)
     {
+
+        dump($modele);
         $this->modele = $modele;
         $this->marque = $marque;
         $this->dateCreated = new DateTime('now');
@@ -64,6 +76,8 @@ abstract class Vehicule{
 
         self::$nb++;
     }
+
+
 
     /**
      * @param array $pneus
@@ -176,12 +190,21 @@ abstract class Vehicule{
         self::$nb = $nb;
     }
 
+    /**
+     * @param $taux
+     * @param VendreInterface $obj
+     */
+    public static function promotion($taux, VendreInterface $obj){
+        if(false){
+            throw new VisibleException();
+        }
+        $obj->seVendre(10 * $taux, new DateTime('now'));
 
+    }
 
-
-
-
-
+    public function modifyVisibility($bool){
+        // modify visibility...
+    }
 
 
 }

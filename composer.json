@@ -1,0 +1,12 @@
+{
+    "name": "root/vehicule",
+    "autoload": {
+        "psr-0": {"": "src/"},
+        "files": [
+            "fonctions.php"
+        ]
+    },
+    "require": {
+        "symfony/var-dumper": "^3.2"
+    }
+}

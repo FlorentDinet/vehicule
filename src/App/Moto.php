@@ -10,6 +10,7 @@ namespace App;
 
 
 use App\Interfaces\VendreInterface;
+use App\Interfaces\VisibleInterface;
 
 /**
  * Class Moto
@@ -59,6 +60,8 @@ class Moto extends Vehicule implements VendreInterface
 
             return "vendu";
     }
+
+
 
 
 }

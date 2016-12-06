@@ -4,12 +4,20 @@ namespace App;
 
 
 use App\Interfaces\VendreInterface;
+use App\Interfaces\VisibleInterface;
+use App\Traits\MailTrait;
 
 /**
  * Class Radio
  * @package App
  */
-class Radio  implements VendreInterface {
+class Radio  implements VendreInterface, VisibleInterface {
+
+
+    /**
+     *
+     */
+    use MailTrait;
 
 
     public function seVendre($prix, \DateTime $dateDispo)
@@ -23,5 +31,14 @@ class Radio  implements VendreInterface {
         return "vendue";
     }
 
+
+    public function modifyVisibility($bool)
+    {
+        if($bool == true){
+            return "Radio à vendre";
+        }else{
+            return "Radio indisponible";
+        }
+    }
 
 }
